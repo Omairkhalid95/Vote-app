@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+
+
+  build:
+    runs: ubuntu-latest
+     
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Dockeer Login
+      uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.DOCKER_USER}}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      run: echo "logged in docker hub"
+    
