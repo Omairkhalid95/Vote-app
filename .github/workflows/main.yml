@@ -46,13 +46,11 @@ jobs:
       with:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBE_CONFIG }}
+    - name: Azure test
+      run: kubectl get pods
     - name: Azure Deployment
       uses: Azure/k8s-deploy@v4
       with:
-        resource-group: kubernetes
-        name: Kube
-        action: deploy
-        strategy: basic
         manifests: kubernetes.yaml
  
     
