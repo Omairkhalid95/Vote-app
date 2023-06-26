@@ -1,8 +1,7 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [main]
+  
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -54,6 +53,6 @@ jobs:
         name: Kube
         action: deploy
         strategy: basic
-        manifests: kubernetes/kubernetes.yaml
+        manifests: Kubernetes/Kubernetes.yaml
  
     
