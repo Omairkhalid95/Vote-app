@@ -40,10 +40,20 @@ jobs:
         DOCKER_REGISTRY: omair095
         IMAGE_NAME: azure_vote_app
         IMAGE_TAG: ${{github.run_number}}
+    - name: Azure CLI  
+      uses: pietrobolcato/install-azure-cli-action@main    
     - name: Azure Login
       uses: azure/k8s-set-context@v3
       with:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBE_CONFIG }}
-        context: ${{ secrets.KUBE_CONTEXT }} # current-context from kubeconfig is used as default
+    - name: Azure Deployment
+      uses: Azure/k8s-deploy@v4
+      with:
+        resource-group: Kubernetes
+        name: Kube
+        action: deploy
+        strategy: basic
+        manifests: kubernetes/kubernetes.yaml
+ 
     
