@@ -19,5 +19,7 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USER}}
         password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Docker Build
+      run: Docker build -t azure_vote_app:${{github.run_number}} .
       
     
