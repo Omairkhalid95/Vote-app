@@ -19,7 +19,10 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKER_USER}}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Docker Build
-      run: Docker build -t azure_vote_app:${{github.run_number}} .
-      
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: omair095/azure_vote_app:${{github.run_number}}
     
