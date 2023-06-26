@@ -25,4 +25,18 @@ jobs:
         context: .
         push: true
         tags: omair095/azure_vote_app:${{github.run_number}}
+       
+  deploy:
+    runs-on: ubuntu-latest
     
+    steps:
+    - name: Image Change
+      uses: cschleiden/replace-tokens@v1
+      with:
+        tokenPrefix: '__'
+        tokenSuffix: '__'
+        files: '["kubernetes/kubernetes.yaml"]'
+      env:
+        DOCKER_REGISTRY: omair095
+        IMAGE_NAME: azure_vote_app
+        IMAGE_TAG: ${{github.run_number}}
