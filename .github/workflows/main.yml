@@ -51,6 +51,7 @@ jobs:
     - name: Azure Deployment
       uses: Azure/k8s-deploy@v4
       with:
-        manifests: kubernetes.yaml
+        manifests: |
+          kubernetes.yaml
  
     
