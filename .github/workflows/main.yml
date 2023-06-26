@@ -26,6 +26,10 @@ jobs:
         tags: omair095/azure_vote_app:${{github.run_number}}
        
   deploy:
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     
     steps:
