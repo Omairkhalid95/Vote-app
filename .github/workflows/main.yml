@@ -26,34 +26,27 @@ jobs:
         tags: omair095/azure_vote_app:${{github.run_number}}
        
   deploy:
-    permissions:
-      actions: read
-      contents: read
-      id-token: write
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Image Change
+    - uses: actions/checkout@v3
+    - name: Docker Image Updated in Yaml File
       uses: cschleiden/replace-tokens@v1
       with:
         tokenPrefix: '__'
         tokenSuffix: '__'
-        files: '["kubernetes/kubernetes.yaml"]'
+        files: '["kubernetes.yaml"]'
       env:
         DOCKER_REGISTRY: omair095
         IMAGE_NAME: azure_vote_app
         IMAGE_TAG: ${{github.run_number}}
-    - name: Azure CLI  
+    - name: Install Azure CLI  
       uses: pietrobolcato/install-azure-cli-action@main    
     - name: Azure Login
       uses: azure/k8s-set-context@v3
       with:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBE_CONFIG }}
-    - name: Azure test
-      run: kubectl get pods
     - name: Azure Deployment
       uses: Azure/k8s-deploy@v4
       with:
