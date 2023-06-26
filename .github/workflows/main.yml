@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: kube
+    runs-on: self-hosted
      
     steps:
     - name: Checkout
