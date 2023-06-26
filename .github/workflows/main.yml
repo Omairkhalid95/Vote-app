@@ -40,3 +40,10 @@ jobs:
         DOCKER_REGISTRY: omair095
         IMAGE_NAME: azure_vote_app
         IMAGE_TAG: ${{github.run_number}}
+    - name: Azure Login
+      uses: azure/k8s-set-context@v3
+      with:
+        method: kubeconfig
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+        context: ${{ secrets.KUBE_CONTEXT }} # current-context from kubeconfig is used as default
+    
