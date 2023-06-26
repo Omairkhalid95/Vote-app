@@ -53,6 +53,6 @@ jobs:
         name: Kube
         action: deploy
         strategy: basic
-        manifests: kubernetes/kubernetes.yaml
+        manifests: kubernetes.yaml
  
     
