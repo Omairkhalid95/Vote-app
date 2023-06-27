@@ -43,8 +43,7 @@ jobs:
         DOCKER_REGISTRY: omair095
         IMAGE_NAME: azure_vote_app
         IMAGE_TAG: ${{github.run_number}}
-    - name: Install Azure CLI  
-      uses: pietrobolcato/install-azure-cli-action@main    
+      
     - name: Azure Login
       uses: azure/k8s-set-context@v3
       with:
