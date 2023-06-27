@@ -38,7 +38,20 @@ jobs:
     
     steps:
  
-    - name: Docker Image Updated in Yaml File
+    - name: Docker Image Updated in Dev Yaml File
+      if: ${{ github.event.inputs.env  == 'dev' }}
+      uses: cschleiden/replace-tokens@v1
+      with:
+        tokenPrefix: __
+        tokenSuffix: __
+        files: '["Kubernetes_dev/kubernetes_dev.yaml"]'
+      env:
+        DOCKER_REGISTRY: omair095
+        IMAGE_NAME: azure_vote_app_${{ github.event.inputs.env }}
+        IMAGE_TAG: ${{github.run_number}}
+
+    - name: Docker Image Updated in Prod Yaml File
+      if: ${{ github.event.inputs.env  == 'prod' }}
       uses: cschleiden/replace-tokens@v1
       with:
         tokenPrefix: __
@@ -54,7 +67,12 @@ jobs:
       with:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBE_CONFIG }}
-    - name: Azure Deployment
+    - name: Azure Deployment Dev Env
+      if: ${{ github.event.inputs.env  == 'dev' }}
+      uses: Azure/k8s-deploy@v4
+      with:
+        manifests: Kubernetes_dev/kubernetes_dev.yaml
+    - name: Azure Deployment Prod Env
       uses: Azure/k8s-deploy@v4
       with:
         manifests: Kubernetes/kubernetes.yaml
