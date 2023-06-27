@@ -73,6 +73,7 @@ jobs:
       with:
         manifests: Kubernetes_dev/kubernetes_dev.yaml
     - name: Azure Deployment Prod Env
+      if: ${{ github.event.inputs.env  == 'prod' }}
       uses: Azure/k8s-deploy@v4
       with:
         manifests: Kubernetes/kubernetes.yaml
