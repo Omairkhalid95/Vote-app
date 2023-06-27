@@ -10,7 +10,7 @@ on:
         required: true
 jobs:
   Checkout-Job:
-    uses: Omairkhalid95/Vote-app/.github/workflows/main.yml@main
+    uses: /.github/workflows/checkout.yml@main
   build:
     runs-on:
       - self-hosted
