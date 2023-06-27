@@ -28,7 +28,9 @@ jobs:
         tags: omair095/azure_vote_app:${{github.run_number}}
        
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: 
+      - self-hosted
+      - label-1
     needs: build
     
     steps:
@@ -44,7 +46,7 @@ jobs:
         IMAGE_NAME: azure_vote_app
         IMAGE_TAG: ${{github.run_number}}
       
-    - name: Azure Login
+    - name: Azure Connection
       uses: azure/k8s-set-context@v3
       with:
         method: kubeconfig
