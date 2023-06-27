@@ -10,7 +10,7 @@ on:
         required: true
 jobs:
   Checkout-Job:
-    uses: Omairkhalid95/Reuseable-workflow/.github/workflows/main.yaml@main
+    uses: Omairkhalid95/Reuseable_workflow/.github/workflows/main.yaml@main
   build:
     runs-on: 
       - self-hosted
