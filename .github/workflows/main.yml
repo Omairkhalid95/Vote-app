@@ -5,6 +5,9 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      env:
+        required: true
 jobs:
   build:
     runs-on: 
@@ -25,7 +28,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: omair095/azure_vote_app:${{github.run_number}}
+        tags: omair095/azure_vote_app_${{ github.event.inputs.env }}:${{github.run_number}}
        
   deploy:
     runs-on: 
@@ -43,7 +46,7 @@ jobs:
         files: '["Kubernetes/kubernetes.yaml"]'
       env:
         DOCKER_REGISTRY: omair095
-        IMAGE_NAME: azure_vote_app
+        IMAGE_NAME: azure_vote_app_${{ github.event.inputs.env }}
         IMAGE_TAG: ${{github.run_number}}
       
     - name: Azure Connection
