@@ -10,7 +10,7 @@ on:
         required: true
 jobs:
   Checkout-Job:
-    uses: .github/workflows/checkout.yml@main
+    uses: ./.github/workflows/checkout.yml@main
   build:
     runs-on:
       - self-hosted
