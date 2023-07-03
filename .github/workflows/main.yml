@@ -12,9 +12,7 @@ jobs:
   #Checkout-Job:
    # uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@main
   build:
-    runs-on:
-      - self-hosted
-      - label-1
+    runs-on: ubuntu-latest
      
     steps:
     - name: Git Checkout
@@ -33,9 +31,7 @@ jobs:
         tags: omair095/azure_vote_app_${{ github.event.inputs.env }}:${{github.run_number}}
        
   deploy:
-    runs-on: 
-      - self-hosted
-      - label-1
+    runs-on: ubuntu-latest
     needs: build
     
     steps:
@@ -64,20 +60,4 @@ jobs:
         IMAGE_NAME: azure_vote_app_${{ github.event.inputs.env }}
         IMAGE_TAG: ${{github.run_number}}
       
-    - name: Azure Connection
-      uses: azure/k8s-set-context@v3
-      with:
-        method: kubeconfig
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
-    - name: Azure Deployment Dev Env
-      if: ${{ github.event.inputs.env  == 'dev' }}
-      uses: Azure/k8s-deploy@v4
-      with:
-        manifests: Kubernetes_dev/kubernetes_dev.yaml
-    - name: Azure Deployment Prod Env
-      if: ${{ github.event.inputs.env  == 'prod' }}
-      uses: Azure/k8s-deploy@v4
-      with:
-        manifests: Kubernetes/kubernetes.yaml
- 
     
