@@ -1,3 +1,4 @@
+name: Reuseable
 on:
   workflow_call
 jobs:
