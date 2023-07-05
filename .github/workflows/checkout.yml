@@ -1,6 +1,8 @@
 on:
-  workflow_call:
-    runs-on: self-hosted
+  workflow_call
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
     steps:
     - name: Git Checkout
       uses: actions/checkout@v2
