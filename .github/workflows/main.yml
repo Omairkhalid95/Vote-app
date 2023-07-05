@@ -9,14 +9,12 @@ on:
       env:
         required: true
 jobs:
-  Checkout-Job:
+  Git-Checkout:
     uses: ./.github/workflows/checkout.yml
   build:
     runs-on: ubuntu-latest
      
     steps:
-    - name: Git Checkout
-      uses: actions/checkout@v2
     - name: Docker Login
       uses: docker/login-action@v2
       with:
