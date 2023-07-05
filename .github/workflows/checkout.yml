@@ -2,7 +2,7 @@ name: Reuseable
 on:
   workflow_call
 jobs:
-  deploy:
+  Git-Checkout:
     runs-on: ubuntu-latest
     steps:
     - name: Git Checkout
