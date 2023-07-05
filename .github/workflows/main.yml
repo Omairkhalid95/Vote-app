@@ -9,7 +9,7 @@ on:
       env:
         required: true
 jobs:
-  Git-Checkout:
+  checkout:
     #uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@main
     uses: ./.github/workflows/checkout.yml
   build:
