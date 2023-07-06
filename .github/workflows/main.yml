@@ -18,9 +18,8 @@ jobs:
     steps:
     - name: Git Checkout
       uses: actions/checkout@v2
-   
-  Docker_Build-Push:
-    uses: ./.github/workflows/checkout.yml
+    - uses: ./.github/workflows/checkout.yml
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
