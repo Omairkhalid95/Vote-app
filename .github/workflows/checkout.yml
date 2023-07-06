@@ -1,6 +1,10 @@
 name: Reuseable
 on:
-  workflow_call
+  #workflow_call
+  workflow_dispatch:
+    inputs:
+      env:
+        required: true
 jobs:
   checkout:
     runs-on: ubuntu-latest
