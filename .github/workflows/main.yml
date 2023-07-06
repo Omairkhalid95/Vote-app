@@ -8,9 +8,7 @@ on:
     inputs:
       env:
         required: true
-permissions:
-  actions: write
-  contents: read
+
 jobs:
   checkout:
     #uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@main
