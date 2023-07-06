@@ -26,7 +26,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
-        context: .
+        context: ./..
         push: true
         tags: omair095/azure_vote_app_${{ github.event.inputs.env }}:${{github.run_number}}
        
