@@ -10,21 +10,21 @@ on:
         required: true
 
 jobs:
-  checkout:
+  #checkout:
     #uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@main
-    uses: ./.github/workflows/checkout.yml
+   # uses: ./.github/workflows/checkout.yml
   build:
     runs-on: ubuntu-latest
      
     steps:
+    - name: Git Checkout
+      uses: actions/checkout@v2
     - name: Docker Login
       uses: docker/login-action@v2
       with:
         registry: docker.io
         username: ${{ secrets.DOCKER_USER}}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
