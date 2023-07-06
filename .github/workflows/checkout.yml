@@ -1,6 +1,8 @@
 name: Reuseable
 on:
   #workflow_call
+  pull_request:
+    branches: [reusable]
   workflow_dispatch:
     inputs:
       env:
