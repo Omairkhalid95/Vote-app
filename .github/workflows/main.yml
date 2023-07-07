@@ -10,12 +10,9 @@ on:
         required: true
 
 jobs:
-  #checkout:
-    #uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@main
-   # uses: ./.github/workflows/checkout.yml
   build:
     uses: ./.github/workflows/checkout.yml 
-
+   ##uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@main
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -25,7 +22,7 @@ jobs:
     - name: dir
       run: ls -ltr
     - name: Docker Image Updated in Dev Yaml File
-      #if: ${{ github.event.inputs.env  == 'dev' }}
+      if: ${{ github.event.inputs.env  == 'dev' }}
       uses: cschleiden/replace-tokens@v1
       with:
         tokenPrefix: __
