@@ -11,8 +11,8 @@ on:
 
 jobs:
   build:
-   # uses: ./.github/workflows/checkout.yml 
-    uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@reuse
+    uses: ./.github/workflows/checkout.yml 
+    #uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@reuse
   deploy:
     runs-on: ubuntu-latest
     needs: build
