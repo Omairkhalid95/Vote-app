@@ -21,8 +21,7 @@ jobs:
     #needs: build
     
     steps:
-    - name: Git Checkout
-      uses: actions/checkout@v2
+
     - name: dir
       run: ls -ltr
     - name: Docker Image Updated in Dev Yaml File
