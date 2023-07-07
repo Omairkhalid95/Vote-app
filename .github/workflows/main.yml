@@ -26,7 +26,7 @@ jobs:
     - name: dir
       run: ls -ltr
     - name: Docker Image Updated in Dev Yaml File
-      if: ${{ github.event.inputs.env  == 'dev' }}
+      #if: ${{ github.event.inputs.env  == 'dev' }}
       uses: cschleiden/replace-tokens@v1
       with:
         tokenPrefix: __
