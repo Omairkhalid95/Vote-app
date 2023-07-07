@@ -21,7 +21,8 @@ jobs:
     #needs: build
     
     steps:
-
+    - name: Git Checkout
+      uses: actions/checkout@v2
     - name: dir
       run: ls -ltr
     - name: Docker Image Updated in Dev Yaml File
@@ -30,7 +31,7 @@ jobs:
       with:
         tokenPrefix: __
         tokenSuffix: __
-        files: '["Kubernetes_devv/kubernetes_dev.yaml"]'
+        files: '["Kubernetes_dev/kubernetes_dev.yaml"]'
       env:
         DOCKER_REGISTRY: omair095
         IMAGE_NAME: azure_vote_app_${{ github.event.inputs.env }}
