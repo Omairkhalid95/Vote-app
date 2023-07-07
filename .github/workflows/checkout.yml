@@ -1,12 +1,7 @@
 name: Reuseable
 on:
-  #workflow_call
-  pull_request:
-    branches: [reusable]
-  workflow_dispatch:
-    inputs:
-      env:
-        required: true
+  workflow_call
+ 
 jobs:
   checkout:
     runs-on: ubuntu-latest
