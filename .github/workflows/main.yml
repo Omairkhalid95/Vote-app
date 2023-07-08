@@ -33,6 +33,25 @@ jobs:
         DOCKER_REGISTRY: omair095
         IMAGE_NAME: azure_vote_app_${{ github.event.inputs.env }}
         IMAGE_TAG: ${{github.run_number}}
+        
+  deploy-prod:
+    runs-on: ubuntu-latest
+    needs: build
+    #environment: dev
+    steps:
+    - name: dir
+      run: ls -ltr
+    - name: Docker Image Updated in Prod Yaml File
+    #  if: ${{ github.event.inputs.env  == 'dev' }}
+      uses: cschleiden/replace-tokens@v1
+      with:
+        tokenPrefix: __
+        tokenSuffix: __
+        files: '["Kubernetes_dev/kubernetes_dev.yaml"]'
+      env:
+        DOCKER_REGISTRY: omair095
+        IMAGE_NAME: azure_vote_app_${{ github.event.inputs.env }}
+        IMAGE_TAG: ${{github.run_number}}
 
       
 
