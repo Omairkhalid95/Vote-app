@@ -10,15 +10,14 @@ on:
         required: true
 
 jobs:
-  #build:
+  build:
   #  uses: ./.github/workflows/checkout.yml 
-    #uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@reuse
+     uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@reuse
   deploy:
     runs-on: ubuntu-latest
-  #  needs: build
+    needs: build
     
     steps:
-    - uses: ./.github/workflows/checkout.yml
     - name: dir
       run: ls -ltr
     - name: Docker Image Updated in Dev Yaml File
