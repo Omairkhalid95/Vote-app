@@ -37,7 +37,7 @@ jobs:
   deploy-prod:
     runs-on: ubuntu-latest
     needs: build
-    #environment: dev
+    environment: prod
     steps:
     - name: dir
       run: ls -ltr
