@@ -11,9 +11,9 @@ on:
 
 jobs:
   build:
-  #  uses: ./.github/workflows/checkout.yml 
-     uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@reuse
-     secrets: inherit
+     uses: ./.github/workflows/checkout.yml 
+     # uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@reuse
+     #secrets: inherit
      
   deploy-dev:
     if: ${{github.event.inputs.env    == 'dev' }}
