@@ -12,7 +12,7 @@ on:
 jobs:
   build:
   #  uses: ./.github/workflows/checkout.yml 
-     uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@reuse
+     uses: Omairkhalid95/Reusable_workflow/.github/workflows/main.yml@main
      secrets: inherit
      
   deploy-dev:
