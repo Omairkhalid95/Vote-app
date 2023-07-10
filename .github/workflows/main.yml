@@ -22,7 +22,7 @@ jobs:
     environment: dev
     steps:
     - name: dir
-      run: ls -ltr
+      run: echo "github.ref_name , $ {{ github.ref_name}}  == 'dev'" 
     - name: Docker Image Updated in Dev Yaml File
     #  if: ${{ github.event.inputs.env  == 'dev' }}
       uses: cschleiden/replace-tokens@v1
