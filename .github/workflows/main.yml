@@ -22,17 +22,17 @@ jobs:
     environment: dev
     steps:
     - name: dir
-      if: ${{ github.ref_name  == 'demo' }}
-      run: echo "ok" 
+      if: ${{ github.event.inputs.env  == 'demo' }}
+      run: echo "ok ${{ github.event.inputs.env  == 'demo' }}" 
     - name: dir
-      if: ${{ github.ref_name  != 'demo' }}
-      run: echo "not ok"
+      if: ${{ github.event.inputs.env  != 'demo' }}
+      run: echo "not ok ${{ github.event.inputs.env  != 'demo' }}"
     - name: dir
-      if: github.ref_name  == 'demo'
-      run: echo "ok without bracket" 
+      if: github.event.inputs.env  == 'demo'
+      run: echo "ok without bracket github.event.inputs.env  == 'demo'" 
     - name: dir
-      if: github.ref_name  != 'demo'
-      run: echo "not ok with bracket"
+      if: github.event.inputs.env  != 'demo'
+      run: echo "not ok with bracket github.event.inputs.env  != 'demo'"
     - name: Docker Image Updated in Dev Yaml File
     #  if: ${{ github.event.inputs.env  == 'dev' }}
       uses: cschleiden/replace-tokens@v1
