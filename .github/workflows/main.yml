@@ -16,7 +16,7 @@ jobs:
      secrets: inherit
      
   deploy-dev:
-    if: github.ref_name   == 'dev' 
+    if: github.ref_name   == 'dev || demo' 
     runs-on: ubuntu-latest
     needs: build
     environment: dev
